@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DASHBOARD</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+OneTel Template
+http://www.templatemo.com/tm-468-onetel
+-->
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="/static//static/css/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/static/css/templatemo-style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <style>
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            color: yellow;
+        }
+        
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        
+        i {
+            border: solid white;
+            border-width: 0 1px 1px 0;
+            display: inline-block;
+            padding: 3px;
+            margin-left: 3px;
+        }
+        
+        .mySlides {
+            display: none;
+        }
+        
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        /* Caption text */
+        
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        /* Number text (1/3 etc) */
+        
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+        /* The dots/bullets/indicators */
+        
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active {
+            background-color: #717171;
+        }
+        /* Fading animation */
+        
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        /* On smaller screens, decrease text size */
+        
+        @media only screen and (max-width: 300px) {
+            .text {
+                font-size: 11px
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- navigation -->
+
+    <div class="container">
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="navbar-header" style="text-align: center;">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+			</button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html" class="active">HOME</a></li>
+                    <li><a href="{% url 'booklist' %}">LIBRARY</a></li>
+                    <li><a href="{% url 'basepage' %}">GENRES</a></li>
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <li onmouseover="classDiv()" onmouseout="classDiv1()"><a href="#"> HELLO {{name}}! <i class="arrow down"></i></a>
+                        <div onmouseover="classDiv()" id="myDropdown" class="dropdown-content" style="display: none;background-color:rgb(88, 85, 85);text-align:center">
+                            <a href="{% url 'password_change' %}" style="color: white;">Change Password</a>
+                            <hr>
+                            <a href="{% url 'logout' %}" style="color: white;">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <script>
+                    function classDiv() {
+                        change_div = document.getElementById('myDropdown')
+                        change_div.style.display = 'block';
+                    }
+
+                    function classDiv1() {
+                        change_div = document.getElementById('myDropdown')
+                        change_div.style.display = 'none';
+                    }
+                </script>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- home section -->
+    <div id="home" style="background-image: url('/static/homeback.jpg');">
+        <div class="container">
+            <div class="row">
+                <div style="text-align: center;position: absolute; left: 10%; top: 20%;">
+                    <h3>WELCOME TO</h3>
+                    <h1>ReadersLand!</h1><br>
+                    <img width="200px" height="200px" src="/static/logo.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- divider section -->
+    <div class="divider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="divider-wrapper divider-one" style="height: 410px;">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <h2>Similars</h2>
+                        <h3>Confused on what to read next?</h3>
+                        <p>Please proceed to get top recommended books similar to books of your choice to read next.</p>
+                        <a href="{% url 'getsimilar' %}"><i class="fa fa-arrow-right" style="color:white;border:none;margin-bottom:3px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="divider-wrapper divider-two" style="height: 410px;">
+                        <i class="fa fa-info" aria-hidden="true"></i>
+                        <h2>Details</h2>
+                        <h3>Want details of a particular book?</h3>
+                        <p>Please proceed to get complete details of a book you wish to know about .</p>
+                        <a href="{% url 'getInfo' %}"><i class="fa fa-arrow-right" style="color:white;border:none;margin-bottom:3px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="divider-wrapper divider-three" style="height: 410px;">
+                        <i class="fa fa-question"></i>
+                        <h2>Suggested Titles</h2>
+                        <h3>Can't recall the title of some book?</h3>
+                        <p>Please proceed to get titles of books matching keywords you remember related to the book.</p>
+                        <a href="{% url 'getNames' %}"><i class="fa fa-arrow-right" style="color:white;border:none;margin-bottom:3px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- about section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="slideshow-container">
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">1 / 8</div>
+                            <img src="/static/g1.jpeg" style="width:90%;height:300px">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">2 / 8</div>
+                            <img src="/static/g2.jpeg" style="width:90%;height:300px">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">3 / 8</div>
+                            <img src="/static/g3.jpeg" style="width:90%;height:300px">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">4 / 8</div>
+                            <img src="/static/g4.jpeg" style="width:90%;height:300px">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">5 / 8</div>
+                            <img src="/static/g5.jpeg" style="width:90%;height:300px">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">6 / 8</div>
+                            <img src="/static/g6.jpeg" style="width:90%;height:300px">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">7 / 8</div>
+                            <img src="/static/g7.jpeg" style="width:90%;height:300px">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">8 / 8</div>
+                            <img src="/static/g8.jpeg" style="width:90%;height:300px">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+
+                    <script>
+                        var slideIndex = 0;
+                        showSlides();
+
+                        function showSlides() {
+                            var i;
+                            var slides = document.getElementsByClassName("mySlides");
+                            var dots = document.getElementsByClassName("dot");
+                            for (i = 0; i < slides.length; i++) {
+                                slides[i].style.display = "none";
+                            }
+                            slideIndex++;
+                            if (slideIndex > slides.length) {
+                                slideIndex = 1
+                            }
+                            for (i = 0; i < dots.length; i++) {
+                                dots[i].className = dots[i].className.replace(" active", "");
+                            }
+                            slides[slideIndex - 1].style.display = "block";
+                            dots[slideIndex - 1].className += " active";
+                            setTimeout(showSlides, 2000); // Change image every 2 seconds
+                        }
+                    </script>
+                </div>
+                <div class="col-md-6 col-sm-12 about-des">
+                    <h2>ABOUT US</h2>
+                    <p>ReadersLand is a Review & Recommendation based website that allows individuals to freely search its database of books, annotations, and reviews. Users can sign up and register books to generate library catalogs and reading lists. They
+                        can also get suggestions on what next to read,Books similar to their interest based on what they have read till now including getting suggestions to book titles based on some keywords they remember and many more.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-5 col-sm-6">
+                    <h3>CONTACT</h3>
+                    <p>ReadersLand is a free review and recommendtions website. Feel free to use it.</p>
+                    <p> contact using below details for any queries or issues.</p>
+                    <p><i class="fa fa-phone"></i> 8989894545</p>
+                    <p><i class="fa fa-envelope-o"></i> book.eview22@gmail.com</p>
+                    <p><i class="fa fa-globe"></i> www.company.com</p>
+                </div>
+
+                <div class="col-md-5 col-sm-6" style="float: right;">
+                    <h3>Some Useful Links</h3>
+                    <p><a href="#">Get Recommendations</a></p>
+                    <p><a href="#">Get Similar Books</a></p>
+                    <p><a href="#">Search Books</a></p>
+                    <p><a href="#">Gallery</a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <p>Copyright © ReadersLand</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <ul class="social-icons">
+                        <li>
+                            <a href="#" class="fa fa-facebook"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-twitter"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-dribbble"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-pinterest"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-behance"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-envelope-o"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- javascript js -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/nivo-lightbox.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+
+</body>
+
+</html>

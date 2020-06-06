@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ReadersLand</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+OneTel Template
+http://www.templatemo.com/tm-468-onetel
+-->
+
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="/static/css/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="/static/css/templatemo-style.css">
+    <!-- google web font css -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <style>
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            color: yellow;
+        }
+        
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        
+        i {
+            border: solid white;
+            border-width: 0 1px 1px 0;
+            display: inline-block;
+            padding: 3px;
+            margin-left: 3px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- navigation -->
+
+    <div class="container">
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="portfolio.html">MY LIBRARY</a></li>
+                    <li><a href="{% url 'home' %}#about">ABOUT US</a></li>
+                    <li><a href="{% url 'home' %}#contact">CONTACT</a></li>
+                    <li onmouseover="classDiv()" onmouseout="classDiv1()"><a href="#"> HELLO {{name}}! <i class="arrow down"></i></a>
+                        <div onmouseover="classDiv()" id="myDropdown" class="dropdown-content" style="display: none;background-color:rgb(88, 85, 85);text-align:center">
+                            <a href="{% url 'password_change' %}" style="color: white;">Change Password</a>
+                            <hr>
+                            <a href="{% url 'logout' %}" style="color: white;">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <script>
+                    function classDiv() {
+                        change_div = document.getElementById('myDropdown')
+                        change_div.style.display = 'block';
+                    }
+
+                    function classDiv1() {
+                        change_div = document.getElementById('myDropdown')
+                        change_div.style.display = 'none';
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- contact section -->
+    <div id="contact" style="background-color: rgb(234, 219, 248);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-sm-12">
+                    <h2 style="color: black;">Get Similar Ones!!!</h2>
+                </div>
+                <div class="col-md-8 col-sm-8 mt30">
+                    <form action="{% url 'getBooks' %}" method="post" role="form">
+                        {% csrf_token %}
+                        <div>
+                            <label for="name1">Title1</label>
+                            <input name="name1" type="text" class="form-control" id="name1" multiple>
+                            <label for="name2">Title2</label>
+                            <input name="name2" type="text" class="form-control" id="name2" multiple>
+                            <label for="name3">Title3</label>
+                            <input name="name3" type="text" class="form-control" id="name3" multiple>
+                        </div>
+                        <div>
+                            <button style="background-color: rgb(203, 163, 241);" type="submit" name="submit" class="btn btn-default">SEND</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- copyright section -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <p>Copyright © 2084 Company Name</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <ul class="social-icons">
+                        <li>
+                            <a href="#" class="fa fa-facebook"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-twitter"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-dribbble"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-pinterest"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-behance"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-envelope-o"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- javascript js -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/nivo-lightbox.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+
+</body>
+
+</html>
