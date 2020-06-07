@@ -28,11 +28,11 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = '0@t1z3bsv%*w3m&n)*s28)%p@yn2=$ge9%5=k!320)jfc9#5s5'
+
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE')=="True")
 
 ALLOWED_HOSTS = ['myreadersland.herokuapp.com']
 
