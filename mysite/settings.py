@@ -23,12 +23,13 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0@t1z3bsv%*w3m&n)*s28)%p@yn2=$ge9%5=k!320)jfc9#5s5'
+#SECRET_KEY = '0@t1z3bsv%*w3m&n)*s28)%p@yn2=$ge9%5=k!320)jfc9#5s5'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myreadersland.herokuapp.com']
 
 
 # Application definition
@@ -88,8 +89,8 @@ DATABASES = {
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'book.eview22@gmail.com'
-EMAIL_HOST_PASSWORD = 'Rasam@22'
+EMAIL_HOST_USER = os.environ.get('email')
+EMAIL_HOST_PASSWORD = os.environ.get('password')
 EMAIL_PORT = 587
 
 # Password validation
