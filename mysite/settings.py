@@ -32,7 +32,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['myreadersland.herokuapp.com']
 
@@ -141,7 +141,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR,]
+#STATICFILES_DIRS = [STATIC_DIR,]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '/home/rasam/ReadersLand/Blog/static'),
+    os.path.join(BASE_DIR, '/home/rasam/ReadersLand/blog/static')
+]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/dappx/user_login/'
