@@ -13,7 +13,7 @@ from .tokens import *
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.conf import settings
-import pymysql
+# import pymysql
 import math
 import numpy as np
 import pandas as pd
@@ -23,14 +23,14 @@ import json
 from flask import request, jsonify
 from django.contrib.auth.forms import AuthenticationForm
 
-conn = pymysql.connect(
-    host = '127.0.0.1',
-    port = 3306,
-    user = 'root',
-    password = 'Rasam@22',
-    database = 'bookReview',
-    autocommit = True
-)
+# conn = pymysql.connect(
+#     host = '127.0.0.1',
+#     port = 3306,
+#     user = 'root',
+#     password = 'Rasam@22',
+#     database = 'bookReview',
+#     autocommit = True
+# )
 
 def registration(request):
     if request.method == 'POST':
@@ -43,9 +43,9 @@ def registration(request):
             firstname=form.cleaned_data['firstname']
             lastname=form.cleaned_data['lastname']
             password=form.cleaned_data['password']
-            response=signup(username=username,email=email,firstname=firstname,lastname=lastname,password=password)
+            # response=signup(username=username,email=email,firstname=firstname,lastname=lastname,password=password)
             #isActive=2 means false
-            response.save()
+            # response.save()
             
             user=form.save(commit=False)
             user.set_password(password)
