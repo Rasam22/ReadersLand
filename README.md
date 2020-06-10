@@ -1,5 +1,6 @@
 # ReadersLand
-This is a website made using django,sqlite3 for books recommendation and reviewing.
+This is a website made using django,sqlite3 for books recommendation and reviewing.It is hosted using heroku and can be accessed at : myreadersland.herokuapp.com
+
 various features include :
 1. User registration and login system with Email based authentication.
 2. Getting books similar to Books of your choice by just one click.
